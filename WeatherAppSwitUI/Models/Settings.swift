@@ -14,6 +14,10 @@ struct Settings: Codable {
     var showPressure: Bool
     var showWind: Bool
     
+    var messurmentUnit: String {
+        isCelsius ? " °C" : " °F"
+    }
+    
    mutating func changeMessurmentUnit() {
         isCelsius.toggle()
         isFarenheit.toggle()

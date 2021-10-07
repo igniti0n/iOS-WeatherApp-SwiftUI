@@ -18,12 +18,12 @@ struct MinMaxView: View {
             Spacer()
             VStack {
                 Text("min")
-                Text("\(UnitConverter.adjustMessurmentUnit(temperature: minTemperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f") C")
+                Text("\(UnitConverter.adjustMessurmentUnit(temperature: minTemperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f")\(settings.settings.messurmentUnit)")
             }
             Spacer()
             VStack {
                 Text("max")
-                Text("\(UnitConverter.adjustMessurmentUnit(temperature: maxTemperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f") C")
+                Text("\(UnitConverter.adjustMessurmentUnit(temperature: maxTemperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f")\(settings.settings.messurmentUnit)")
             }
             Spacer()
         }

@@ -12,12 +12,12 @@ struct TemperatureView: View {
     @EnvironmentObject private var settings: WeatherSettingsViewModel
     @Binding  var temperature: Double
     @Binding  var cityName: String
-    
+        
     var body: some View {
         HStack {
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(UnitConverter.adjustMessurmentUnit(temperature: temperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f") C")
+                Text("\(UnitConverter.adjustMessurmentUnit(temperature: temperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f")\(settings.settings.messurmentUnit)")
                     .font(theme.largeFont)
                     .bold()
                 Text("\(cityName)")
