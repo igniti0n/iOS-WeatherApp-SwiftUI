@@ -14,32 +14,15 @@ class LocationSearchViewModel: ObservableObject {
     
     init() {
         readSearchedCitiesFromUserDefaults()
-        $searchedCities.sink {[weak self] storedCities in
-            self?.saveSearchedCitiesToUserDefaults(cities: storedCities)
-        }.store(in: &cancelables)
+//        $searchedCities.sink {[weak self] storedCities in
+//            self?.saveSearchedCitiesToUserDefaults(cities: storedCities)
+//        }.store(in: &cancelables)
     }
 
 }
 
 private extension LocationSearchViewModel {
-    func saveSearchedCitiesToUserDefaults(cities: [String]) {
-        let defaults = UserDefaults.standard
-        guard
-        let encodedData = try? JSONEncoder().encode(cities)
-        else {
-            return
-        }
-        defaults.setValue(encodedData, forKey: "cities")
-    }
-    
     func readSearchedCitiesFromUserDefaults() {
-        let defaults = UserDefaults.standard
-        guard
-        let encodedData = defaults.data(forKey: "cities"),
-        let savedCities = try? JSONDecoder().decode(Array<String>.self, from: encodedData)
-        else {
-            return
-        }
-        searchedCities += savedCities.sorted()
+       searchedCities = CitiesStorage.readSearchedCitiesFromUserDefaults()
     }
 }

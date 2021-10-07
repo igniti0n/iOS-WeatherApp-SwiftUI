@@ -35,6 +35,9 @@
 		2C7B18A0270DC49D0046CEFC /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B189F270DC49D0046CEFC /* LocationService.swift */; };
 		2C7B18A2270DDD1F0046CEFC /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B18A1270DDD1F0046CEFC /* UnitConverter.swift */; };
 		2C7B18A4270F16BE0046CEFC /* NavigationButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B18A3270F16BE0046CEFC /* NavigationButtonExtension.swift */; };
+		2C7B18A6270F18C00046CEFC /* UpperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B18A5270F18C00046CEFC /* UpperView.swift */; };
+		2C7B18A8270F19500046CEFC /* LowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B18A7270F19500046CEFC /* LowerView.swift */; };
+		2C7B18AB270F1B040046CEFC /* CitiesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B18AA270F1B040046CEFC /* CitiesStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		2C7B189F270DC49D0046CEFC /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		2C7B18A1270DDD1F0046CEFC /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
 		2C7B18A3270F16BE0046CEFC /* NavigationButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonExtension.swift; sourceTree = "<group>"; };
+		2C7B18A5270F18C00046CEFC /* UpperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperView.swift; sourceTree = "<group>"; };
+		2C7B18A7270F19500046CEFC /* LowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerView.swift; sourceTree = "<group>"; };
+		2C7B18AA270F1B040046CEFC /* CitiesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +181,7 @@
 		2C7B1876270D98720046CEFC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2C7B18A9270F19780046CEFC /* MainViews */,
 				2C7B1877270D988A0046CEFC /* TopButtonsView.swift */,
 				2C7B1879270D98960046CEFC /* TemperatureView.swift */,
 				2C7B187B270D98AD0046CEFC /* MinMaxView.swift */,
@@ -190,6 +197,7 @@
 				2C7B1882270DA5E10046CEFC /* BackgroundView.swift */,
 				2C7B18A1270DDD1F0046CEFC /* UnitConverter.swift */,
 				2C7B18A3270F16BE0046CEFC /* NavigationButtonExtension.swift */,
+				2C7B18AA270F1B040046CEFC /* CitiesStorage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -219,6 +227,15 @@
 				2C7B189F270DC49D0046CEFC /* LocationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2C7B18A9270F19780046CEFC /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B18A5270F18C00046CEFC /* UpperView.swift */,
+				2C7B18A7270F19500046CEFC /* LowerView.swift */,
+			);
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,13 +312,16 @@
 				2C7B1897270DBC980046CEFC /* SearchView.swift in Sources */,
 				2C7B1899270DBCA50046CEFC /* SearchedCitiesView.swift in Sources */,
 				2C7B18A0270DC49D0046CEFC /* LocationService.swift in Sources */,
+				2C7B18AB270F1B040046CEFC /* CitiesStorage.swift in Sources */,
 				2C7B1878270D988A0046CEFC /* TopButtonsView.swift in Sources */,
+				2C7B18A8270F19500046CEFC /* LowerView.swift in Sources */,
 				2C7B1883270DA5E10046CEFC /* BackgroundView.swift in Sources */,
 				2C7B18A2270DDD1F0046CEFC /* UnitConverter.swift in Sources */,
 				2C7B1890270DBBA40046CEFC /* CheckView.swift in Sources */,
 				2C7B1887270DA80A0046CEFC /* WeatherSettingsViewModel.swift in Sources */,
 				2C7B187E270D98BC0046CEFC /* DetailsView.swift in Sources */,
 				2C7B188E270DA9190046CEFC /* DetailsSettings.swift in Sources */,
+				2C7B18A6270F18C00046CEFC /* UpperView.swift in Sources */,
 				2C7B1875270D957E0046CEFC /* WeatherRepresentationViewModel.swift in Sources */,
 				2C7B1892270DBC120046CEFC /* LocationSearchView.swift in Sources */,
 				2C7B18A4270F16BE0046CEFC /* NavigationButtonExtension.swift in Sources */,

@@ -17,7 +17,6 @@ class WeatherSettingsViewModel: ObservableObject {
     init() {
         readSettingsFromDefaults()
         $settings.sink {[weak self] newSettings in
-            print("Settings changed!")
             self?.saveSettingsToDefaults(newSettings: newSettings!)
         }.store(in: &cancellable)
     }
@@ -31,7 +30,6 @@ private extension WeatherSettingsViewModel {
             return
         }
         defaults.setValue(encodedData, forKey: settingsKey)
-        print("Saved settings!")
     }
     
     func readSettingsFromDefaults(){
@@ -42,7 +40,6 @@ private extension WeatherSettingsViewModel {
             return
         }
         let setFromData = Settings.fromData(data: encodedData)
-        print("Settings form data: \(setFromData)")
         settings =  setFromData ?? Settings.defaultSettings()
     }
 }

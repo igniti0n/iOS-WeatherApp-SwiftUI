@@ -20,7 +20,6 @@ struct LocationSearchView: View {
         BackgroundView {
             VStack(alignment: .leading, spacing: 20) {
                 SearchView { cityName  in
-                    viewModel.searchedCities.append(cityName)
                     onCitySearch?(cityName)
                 }
                 SearchedCitiesView(cities: $viewModel.searchedCities) { cityName in

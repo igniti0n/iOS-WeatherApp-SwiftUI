@@ -41,7 +41,7 @@ extension WeatherReperesentationViewModel {
             URLQueryItem(name: "lon", value: String(coordinates.longitude)),
             URLQueryItem(name: "appid", value: apiKey)
         ]
-        fetchWeatherData(url: components.url!)
+        fetchWeatherData(url: components.url!, successHandler: nil)
     }
     func fetchWeatherDataCityName(cityName: String) {
         var components = URLComponents(string: baseUrl)!
@@ -49,13 +49,15 @@ extension WeatherReperesentationViewModel {
             URLQueryItem(name: "q", value: cityName),
             URLQueryItem(name: "appid", value: apiKey)
         ]
-        fetchWeatherData(url: components.url!)
+        fetchWeatherData(url: components.url!) {
+            CitiesStorage.saveSearchedCitiesToUserDefaults(newCity: cityName)
+        }
     }
 }
 
 private extension WeatherReperesentationViewModel {
     // MARK: - FETCHIGN DATA WITH PUBLISHER-SUBSCRIBER
-    func fetchWeatherData(url: URL) {
+    func fetchWeatherData(url: URL, successHandler: (()->Void)?) {
         URLSession.shared.dataTaskPublisher(for: url)
             .tryMap({ (data: Data, response: URLResponse) -> Result<Weather, NetworkError> in
                 guard
@@ -76,17 +78,15 @@ private extension WeatherReperesentationViewModel {
             })
             .receive(on: RunLoop.main)
             .sink { completion in
-                print("Data task completed: \(completion)")
-            } receiveValue: {  [weak self] output in
-                print("network data: \(output)")
+              } receiveValue: {  [weak self] output in
                 switch output {
-                case .failure(let error):
-                    self?.weather = Weather.dummyWeather
-                    print("error occured: \(error.textDescription), \n trying to fetch for London...")
-                    self?.fetchWeatherDataCityName(cityName: "London")
+                case .failure(_):
+                    print("failed to fetch data")
+//                    self?.weather = Weather.dummyWeather
+//                    self?.fetchWeatherDataCityName(cityName: "London")
                 case .success(let newWeather):
-                    print("Fetching weather success!!!!")
                     self?.weather = newWeather
+                    successHandler?()
                 }
             }
             .store(in: &cancaelablesSet)
