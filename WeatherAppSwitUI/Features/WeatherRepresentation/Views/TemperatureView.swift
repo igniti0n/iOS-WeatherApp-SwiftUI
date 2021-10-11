@@ -10,8 +10,8 @@ import SwiftUI
 struct TemperatureView: View {
     @EnvironmentObject private var theme: Theme
     @EnvironmentObject private var settings: WeatherSettingsViewModel
-    @Binding  var temperature: Double
-    @Binding  var cityName: String
+    var temperature: Double
+    var cityName: String
         
     var body: some View {
         HStack {

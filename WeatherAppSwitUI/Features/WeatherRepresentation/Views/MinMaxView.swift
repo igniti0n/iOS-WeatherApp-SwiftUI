@@ -10,8 +10,8 @@ import SwiftUI
 struct MinMaxView: View {
     @EnvironmentObject private var theme: Theme
     @EnvironmentObject private var settings: WeatherSettingsViewModel
-    @Binding var minTemperature: Double
-    @Binding var maxTemperature: Double
+    var minTemperature: Double
+    var maxTemperature: Double
     
     var body: some View {
         HStack(alignment: .center) {

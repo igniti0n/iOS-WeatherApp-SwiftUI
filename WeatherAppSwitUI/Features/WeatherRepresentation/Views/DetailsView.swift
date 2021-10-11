@@ -10,9 +10,9 @@ import SwiftUI
 struct DetailsView: View {
     @EnvironmentObject private var theme: Theme
     @EnvironmentObject private var settings: WeatherSettingsViewModel
-    @Binding var humidity: Double
-    @Binding var pressure: Double
-    @Binding var windSpeed: Double
+    var humidity: Double
+    var pressure: Double
+    var windSpeed: Double
     
     var body: some View {
         HStack(alignment: .center) {

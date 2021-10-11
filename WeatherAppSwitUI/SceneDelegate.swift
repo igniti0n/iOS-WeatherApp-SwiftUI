@@ -23,13 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let settings = WeatherSettingsViewModel()
-        let contentView = WeatherRepresentationView(viewModel: WeatherReperesentationViewModel()).environment(\.managedObjectContext, context).environmentObject(Theme()).environmentObject(settings)
+        
+//        let contentView = WeatherRepresentationView(viewModel: WeatherReperesentationViewModel()).environment(\.managedObjectContext, context).environmentObject(Theme()).environmentObject(settings)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = WeatherRepresentationModule().build()
             self.window = window
             window.makeKeyAndVisible()
         }

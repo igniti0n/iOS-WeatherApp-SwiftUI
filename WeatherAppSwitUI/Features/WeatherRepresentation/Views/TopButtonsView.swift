@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TopButtonsView: View {
-    var onCitySearch: ((String)->Void)?
+    let onSearchButtonPressed: (()->Void)?
+    let onSettingsButtonPressed: (()->Void)?
     @EnvironmentObject private var theme: Theme
     
     let conditionId = 800
@@ -27,23 +28,20 @@ struct TopButtonsView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            NavigationLink(
-                destination: LocationSearchView(viewModel: LocationSearchViewModel(),onCitySearch: onCitySearch),
-                label: {
-                    Image("search")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 44, height: 44, alignment: .center)
-                })
-            NavigationLink(
-                destination: WeatherSettingsView(viewModel: WeatherSettingsViewModel()),
-                label: {
-                    Image("settings")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 44, height: 44, alignment: .center)
-                })
-                
+            Image("search")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 44, height: 44, alignment: .center)
+                .onTapGesture {
+                    onSearchButtonPressed?()
+                }
+            Image("settings")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 44, height: 44, alignment: .center)
+                .onTapGesture {
+                    onSettingsButtonPressed?()
+                }
             Spacer()
             Image(systemName: conditionName)
                 .resizable()
@@ -55,6 +53,6 @@ struct TopButtonsView: View {
 
 struct TopButtonsView_Previews: PreviewProvider {
     static var previews: some View {
-        TopButtonsView()
+       Text("he he he he")// TopButtonsView()
     }
 }

@@ -21,6 +21,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         manager.delegate = self
+        print("init location")
     }
 
     func start() {

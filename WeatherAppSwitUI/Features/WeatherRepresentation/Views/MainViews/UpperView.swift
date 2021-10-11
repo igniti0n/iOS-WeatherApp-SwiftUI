@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct UpperView: View {
-    @ObservedObject var viewModel: WeatherReperesentationViewModel
-
+    let onSearchButtonPressed: (()->Void)?
+    let onSettingsButtonPressed: (()->Void)?
+    var weather: Weather
+    
+    
     var body: some View {
         GeometryReader { innerContext in
             VStack(alignment: .leading) {
-                TopButtonsView(onCitySearch: { city in
-                    viewModel.fetchWeatherDataCityName(cityName: city)
-                })
+                TopButtonsView(onSearchButtonPressed: onSearchButtonPressed, onSettingsButtonPressed: onSettingsButtonPressed)
                     .frame(height: innerContext.size.height / 2.5, alignment: .center)
-                TemperatureView(temperature: $viewModel.weather.temperature, cityName: $viewModel.weather.name)
+                TemperatureView(temperature: weather.temperature, cityName: weather.name)
                 Spacer()
             }
         }
@@ -26,6 +27,6 @@ struct UpperView: View {
 
 struct UpperView_Previews: PreviewProvider {
     static var previews: some View {
-       Text("nope.")// UpperView()
+        Text("nope.")// UpperView()
     }
 }

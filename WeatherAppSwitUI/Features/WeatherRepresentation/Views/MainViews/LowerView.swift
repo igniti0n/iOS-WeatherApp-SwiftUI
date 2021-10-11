@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct LowerView: View {
-    @ObservedObject var viewModel: WeatherReperesentationViewModel
+    var weather: Weather
 
     var body: some View {
         VStack(alignment: .center) {
-            MinMaxView(minTemperature: $viewModel.weather.minTemperature, maxTemperature: $viewModel.weather.maxTemperature)
+            MinMaxView(minTemperature: weather.minTemperature, maxTemperature: weather.maxTemperature)
                 .padding(40)
             Spacer()
-            DetailsView(humidity: $viewModel.weather.humidity, pressure: $viewModel.weather.pressure, windSpeed: $viewModel.weather.windSpeed)
+            DetailsView(humidity: weather.humidity, pressure: weather.pressure, windSpeed: weather.windSpeed)
                 .padding(40)
         }
     }
