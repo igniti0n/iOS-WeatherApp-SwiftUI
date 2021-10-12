@@ -21,14 +21,12 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         manager.delegate = self
-        print("init location")
     }
 
     func start() {
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lastKnownLocation = locations.first?.coordinate
     }

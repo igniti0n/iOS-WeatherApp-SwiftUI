@@ -16,6 +16,7 @@ class LocationSearchInteractor: InteractorInterface {
 }
 
 extension LocationSearchInteractor: LocationSearchInteractorPresenter {
+    // MARK: - API
     func fetchWeatherDataForCity(cityName: String, onSuccess: @escaping () -> Void) {
         presenter.renderLoading()
         weatherFetcher.fetchWeatherForCity(cityName: cityName)
@@ -33,7 +34,7 @@ extension LocationSearchInteractor: LocationSearchInteractorPresenter {
             .store(in: &cancaelablesSet)
         
     }
-    
+    // MARK: - User defaults
     func readCitiesFromStorage() {
         presenter.renderLoading()
         let cities = CitiesStorage.readSearchedCitiesFromUserDefaults()

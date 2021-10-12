@@ -11,6 +11,7 @@ class WeatherSettingsInteractor: InteractorInterface {
     weak var presenter: WeatherSettingsPresenterInteractor!
 }
 
+// MARK: - User defaults
 extension WeatherSettingsInteractor: WeatherSettingsInteractorPresenter {
     func saveSettingsToUserDefaults(settings: Settings) {
         SettingsStorage.saveSettingsToUserDefaults(settings: settings)

@@ -32,8 +32,9 @@ class WeatherRepresentationInteractor: InteractorInterface {
     }
 }
 
+
+// MARK: - API Communication
 extension WeatherRepresentationInteractor: WeatherRepresentationInteractorPresenter {
-    // MARK: - API Communication
     func fetchWeatherForCurrentLocation(location: CLLocationCoordinate2D) {
         presenter.renderLoading()
         weatherFetcher.fetchWeatherForLocation(location: location)
@@ -49,6 +50,7 @@ extension WeatherRepresentationInteractor: WeatherRepresentationInteractorPresen
     }
 }
 
+// MARK: - User defaults
 extension WeatherRepresentationInteractor {
     func getCurrentWeatherSettings() -> Settings {
         SettingsStorage.readSettingsFromUserDefaults()

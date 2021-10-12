@@ -38,28 +38,13 @@ public protocol RouterInterface: RouterPresenterInterface {
 }
 
 // MARK: - "i/o" transitions
-public protocol RouterPresenterInterface: AnyObject {
-    
-}
-
-public protocol InteractorPresenterInterface: AnyObject {
-    
-}
-
-public protocol PresenterRouterInterface: AnyObject {
-    
-}
-
-public protocol PresenterInteractorInterface: AnyObject {
-    
-}
-
-public protocol PresenterViewInterface: AnyObject {
-    
-}
+public protocol RouterPresenterInterface: AnyObject {}
+public protocol InteractorPresenterInterface: AnyObject {}
+public protocol PresenterRouterInterface: AnyObject {}
+public protocol PresenterInteractorInterface: AnyObject {}
+public protocol PresenterViewInterface: AnyObject {}
 
 // MARK: - module
-
 public protocol ModuleInterface {
 
     associatedtype View where View: ViewInterface
@@ -71,7 +56,6 @@ public protocol ModuleInterface {
 }
 
 public extension ModuleInterface {
-
     func assemble(presenter: Presenter, router: Router, interactor: Interactor) {
         presenter.interactor = (interactor as! Self.Presenter.InteractorPresenter)
         presenter.router = (router as! Self.Presenter.RouterPresenter)
