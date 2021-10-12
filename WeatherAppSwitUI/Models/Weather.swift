@@ -56,7 +56,5 @@ struct Weather: Codable {
         return try? encoder.encode(self)
     }
     
-    
-    
 }
 

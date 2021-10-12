@@ -11,44 +11,42 @@ struct WeatherRepresentationView: View, ViewInterface {
     @ObservedObject private var viewModel: WeatherReperesentationViewModel
     var presenter: WeatherRepresentationPresenterView!
     
-    init(viewModel: WeatherReperesentationViewModel) {
+    init(viewModel: WeatherReperesentationViewModel, presenter: WeatherRepresentationPresenterView) {
         self.viewModel = viewModel
+        self.presenter = presenter
     }
     
     var body: some View {
         NavigationView {
             BackgroundView {
                 switch viewModel.weatherState {
-                    case .loading:
-                        Text("Loading")
-                    case .error(let error):
-                        Text("error \(error.localizedDescription)")
-                    case .loaded(let weather):
-                        GeometryReader { ctx in
-                                    VStack {
-                                        UpperView(onSearchButtonPressed: {
-                                            presenter.navigateToSearch()
-                                        }, onSettingsButtonPressed: {
-                                            presenter.navigateToSettings()
-                                        }, weather: weather)
-                                            .frame(height: ctx.size.height / 2, alignment: .center)
-                                            .padding(EdgeInsets(top: 10, leading: 40, bottom: 10, trailing: 40))
-                                        LowerView(weather: weather)
-                                        .frame(width: ctx.size.width, height: ctx.size.height / 2, alignment: .center)
-                                    }
-                                }
-                            
+                case .loading:
+                    Text("Loading")
+                case .error(let error):
+                    Text("error \(error.localizedDescription)")
+                case .loaded(let weather):
+                    WeatherRepresentationContentView(weather: weather, presenter: presenter)
                 }
-                }
-                .navigationBarHidden(true)
+            }
+            .navigationBarHidden(true)
+            .environmentObject(viewModel.settings)
+            .environmentObject(Theme())
+            .onAppear() {
+                presenter.getCurrentWeatherSettings()
+                presenter.getCurrentWeather()
+            }
+            .alert(isPresented: $viewModel.isErrorAlertShown) {
+                Alert(title: Text( "Operation failed"), message: Text(viewModel.errorMessage), dismissButton: .some(.cancel(Text("Okay."))))
             }
         }
     }
-    
-    
-    
-    struct WeatherRepresentationView_Previews: PreviewProvider {
-        static var previews: some View {
-            WeatherRepresentationView(viewModel: WeatherReperesentationViewModel())
-        }
+}
+
+
+
+struct WeatherRepresentationView_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("")
+        //            WeatherRepresentationView(viewModel: WeatherReperesentationViewModel())
     }
+}

@@ -8,25 +8,22 @@
 import Foundation
 
 class CitiesStorage {
-    static func saveSearchedCitiesToUserDefaults(newCity: String) {
-        var cities = readSearchedCitiesFromUserDefaults()
-        if cities.contains(newCity) {
-            return
-        }
-        cities.append(newCity)
+    static let CITIES_KEY = "cities"
+
+    static func saveSearchedCitiesToUserDefaults(newCities: [String]) {
         let defaults = UserDefaults.standard
         guard
-        let encodedData = try? JSONEncoder().encode(cities)
+        let encodedData = try? JSONEncoder().encode(newCities)
         else {
             return
         }
-        defaults.setValue(encodedData, forKey: "cities")
+        defaults.setValue(encodedData, forKey: CITIES_KEY)
     }
     
    static func readSearchedCitiesFromUserDefaults()  -> Array<String>{
         let defaults = UserDefaults.standard
         guard
-        let encodedData = defaults.data(forKey: "cities"),
+        let encodedData = defaults.data(forKey: CITIES_KEY),
         let savedCities = try? JSONDecoder().decode(Array<String>.self, from: encodedData)
         else {
             return []

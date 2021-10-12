@@ -17,6 +17,8 @@ enum WeatherRepresentationState {
 
 class WeatherReperesentationViewModel: ObservableObject {
     @Published var weatherState: WeatherRepresentationState = .loading
+    @Published var settings = WeatherSettingsViewModel()
     @Published var isErrorAlertShown = false
+    var errorMessage = "Error while fetching data."
 }
 

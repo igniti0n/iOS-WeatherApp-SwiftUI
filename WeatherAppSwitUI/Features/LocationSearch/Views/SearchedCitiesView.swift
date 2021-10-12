@@ -9,15 +9,15 @@ import SwiftUI
 
 struct SearchedCitiesView: View {
     var onCityPressed: ((String)->Void)?
-    @Binding var cities: Array<String>
+    let cities: Array<String>
     
     @EnvironmentObject private var theme: Theme
     
-    init(cities: Binding<Array<String>>, onCityPressed: ((String)->Void)?) {
+    init(cities: Array<String>, onCityPressed: ((String)->Void)?) {
         UITableViewCell.appearance().backgroundColor = .none
         UITableView.appearance().backgroundColor = .none
         UITableView.appearance().separatorStyle = .none
-        self._cities = cities
+        self.cities = cities
         self.onCityPressed = onCityPressed
     }
     

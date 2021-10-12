@@ -16,11 +16,9 @@ class WeatherRepresentationRouter: RouterInterface {
 extension WeatherRepresentationRouter: WeatherRepresentationRouterPresenter {
     // MARK: - Navigation
     func navigateToSearch(viewModel: LocationSearchViewModel) {
-        let controller = UIHostingController(rootView: LocationSearchView(viewModel: viewModel))
-        viewController?.navigationController?.pushViewController(controller, animated: true)
+        viewController?.navigationController?.pushViewController(LocationSearchModule().build(), animated: true)
     }
     func navigateToSettings(viewModel: WeatherSettingsViewModel) {
-        let controller = UIHostingController(rootView: WeatherSettingsView(viewModel: viewModel))
-        viewController?.navigationController?.pushViewController(controller, animated: true)
+        viewController?.navigationController?.pushViewController(WeatherSettingsModule().build(), animated: true)
     }
 }

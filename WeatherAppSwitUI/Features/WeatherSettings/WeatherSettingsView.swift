@@ -7,12 +7,15 @@
 
 import SwiftUI
 
-struct WeatherSettingsView: View {
+struct WeatherSettingsView: View, ViewInterface {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @ObservedObject private var viewModel: WeatherSettingsViewModel
+    var presenter: WeatherSettingsPresenterView!
     
-    init(viewModel: WeatherSettingsViewModel) {
+    init(viewModel: WeatherSettingsViewModel, presenter: WeatherSettingsPresenterView) {
         self.viewModel = viewModel
+        self.presenter = presenter
+        NavigationBarStyle.apply()
     }
     
     var body: some View {
@@ -24,11 +27,15 @@ struct WeatherSettingsView: View {
                 Spacer()
             }
         }
+        .environmentObject(Theme())
+        .onAppear() {
+            presenter.getSettingsFromUserDefaults()
+        }
     }
 }
 
 struct WeatherSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherSettingsView(viewModel: WeatherSettingsViewModel())
+        Text("")//WeatherSettingsView(viewModel: WeatherSettingsViewModel())
     }
 }

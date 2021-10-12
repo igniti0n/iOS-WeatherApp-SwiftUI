@@ -34,20 +34,8 @@ class WeatherRepresentationInteractor: InteractorInterface {
 
 extension WeatherRepresentationInteractor: WeatherRepresentationInteractorPresenter {
     // MARK: - API Communication
-    func fetchWeatherForCity(cityName: String) {
-        weatherFetcher.fetchWeatherForCity(cityName: cityName)
-            .receive(on: RunLoop.main)
-            .sink { [weak self] completion in
-                if case .failure(let error) = completion {
-                    self?.presenter.renderError(error: error)
-                }
-            } receiveValue: {  [weak self] output in
-                self?.presenter.renderContent(weather: output)
-            }
-            .store(in: &cancaelablesSet)
-    }
     func fetchWeatherForCurrentLocation(location: CLLocationCoordinate2D) {
-        print("Location changed")
+        presenter.renderLoading()
         weatherFetcher.fetchWeatherForLocation(location: location)
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
@@ -58,5 +46,15 @@ extension WeatherRepresentationInteractor: WeatherRepresentationInteractorPresen
                 self?.presenter.renderContent(weather: output)
             }
             .store(in: &cancaelablesSet)
+    }
+}
+
+extension WeatherRepresentationInteractor {
+    func getCurrentWeatherSettings() -> Settings {
+        SettingsStorage.readSettingsFromUserDefaults()
+    }
+    func getCurrentWeather() {
+        guard let weather = WeatherStorage.readWeatherCitiesFromUserDefaults()else {return}
+        presenter.renderContent(weather: weather)
     }
 }

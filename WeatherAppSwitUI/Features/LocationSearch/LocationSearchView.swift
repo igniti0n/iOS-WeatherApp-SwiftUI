@@ -7,30 +7,37 @@
 
 import SwiftUI
 
-struct LocationSearchView: View {
+struct LocationSearchView: View, ViewInterface {
     @ObservedObject private var viewModel: LocationSearchViewModel
+    var presenter: LocationSearchPresenterView!
     
-    init(viewModel: LocationSearchViewModel) {
+    init(viewModel: LocationSearchViewModel, presenter: LocationSearchPresenterView) {
         self.viewModel = viewModel
+        self.presenter = presenter
+        NavigationBarStyle.apply()
     }
     
     var body: some View {
         BackgroundView {
-            VStack(alignment: .leading, spacing: 20) {
-                SearchView { cityName  in
-                    
-                }
-                SearchedCitiesView(cities: $viewModel.searchedCities) { cityName in
-                
-                }
+            switch viewModel.state {
+            case .loading:
+                Text("Loading...")
+            case .loaded(let cities):
+                LocationSearchContentView(cities: cities, presenter: presenter)
             }
-            .padding(EdgeInsets(top: 40, leading: 40, bottom: 0, trailing: 40))
+        }
+        .environmentObject(Theme())
+        .onAppear() {
+            presenter.readCitiesFromStorage()
+        }
+        .alert(isPresented: $viewModel.hasError) {
+            Alert(title: Text( "Operation failed."), message: Text("Failed to retrieve data for searched city."), dismissButton: .some(.cancel(Text("Okay."))))
         }
     }
-}
-
-struct LocationSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        LocationSearchView(viewModel: LocationSearchViewModel())
+    
+    struct LocationSearchView_Previews: PreviewProvider {
+        static var previews: some View {
+            LocationSearchView(viewModel: LocationSearchViewModel(), presenter: LocationSearchPresenter.init())
+        }
     }
 }

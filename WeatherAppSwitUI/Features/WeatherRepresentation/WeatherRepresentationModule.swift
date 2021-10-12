@@ -11,8 +11,11 @@ import UIKit
 import SwiftUI
 
 protocol WeatherRepresentationInteractorPresenter: InteractorPresenterInterface {
-    func fetchWeatherForCity(cityName: String)
+    //func fetchWeatherForCity(cityName: String)
     func fetchWeatherForCurrentLocation(location: CLLocationCoordinate2D)
+    func getCurrentWeatherSettings() -> Settings
+    func getCurrentWeather()
+
 }
 
 protocol WeatherRepresentationPresenterInteractor: PresenterInteractorInterface {
@@ -28,6 +31,9 @@ protocol WeatherRepresentationPresenterRouter: PresenterRouterInterface {
 protocol WeatherRepresentationPresenterView: PresenterViewInterface {
     func navigateToSearch()
     func navigateToSettings()
+    func getCurrentWeatherSettings()
+    func getCurrentWeather()
+
 }
 
 protocol WeatherRepresentationRouterPresenter: RouterPresenterInterface {
@@ -41,20 +47,22 @@ class WeatherRepresentationModule: ModuleInterface {
     typealias Router = WeatherRepresentationRouter
     typealias Interactor = WeatherRepresentationInteractor
     
+    init() {
+        WeatherStorage.deleteWeatherFromUserDefaults()
+    }
+    
     // MARK:- Assembling everything
     func build() -> UIViewController {
         let presenter = Presenter()
         let router = Router()
         let interactor = Interactor()
         let viewModel = WeatherReperesentationViewModel()
-        let settings = WeatherSettingsViewModel()
-        var view = WeatherRepresentationView(viewModel: viewModel)
+        let view = WeatherRepresentationView(viewModel: viewModel, presenter: presenter)
         presenter.viewModel = viewModel
-        view.presenter = presenter
-        print("Assembling home")
         assemble(presenter: presenter, router: router, interactor: interactor)
-        let hostingController = UIHostingController(rootView: view.environmentObject(settings).environmentObject(Theme()))
+        let hostingController = UIHostingController(rootView: view.navigationBarHidden(true))
         let navigationController = UINavigationController(rootViewController: hostingController)
+        hostingController.navigationItem.title = ""
         router.viewController = hostingController
         return navigationController
     }

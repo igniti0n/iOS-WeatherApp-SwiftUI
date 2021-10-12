@@ -11,6 +11,7 @@ class WeatherRepresentationPresenter: PresenterInterface {
     var interactor: WeatherRepresentationInteractorPresenter!
     var router: WeatherRepresentationRouterPresenter!
     weak var viewModel: WeatherReperesentationViewModel!
+
 }
 
 extension WeatherRepresentationPresenter: WeatherRepresentationPresenterInteractor {
@@ -32,8 +33,14 @@ extension WeatherRepresentationPresenter: WeatherRepresentationPresenterView {
     func navigateToSettings() {
         router.navigateToSettings(viewModel: WeatherSettingsViewModel())
     }
+    func getCurrentWeatherSettings() {
+        viewModel.settings.settings = interactor.getCurrentWeatherSettings()
+    }
+    func getCurrentWeather() {
+        interactor.getCurrentWeather()
+    }
 }
 
 extension WeatherRepresentationPresenter: WeatherRepresentationPresenterRouter {
-    
+  
 }

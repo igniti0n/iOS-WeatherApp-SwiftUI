@@ -8,21 +8,12 @@
 import Foundation
 import Combine
 
-class LocationSearchViewModel: ObservableObject {
-    @Published var searchedCities = [String]()
-    private var cancelables = Set<AnyCancellable>()
-    
-    init() {
-        readSearchedCitiesFromUserDefaults()
-//        $searchedCities.sink {[weak self] storedCities in
-//            self?.saveSearchedCitiesToUserDefaults(cities: storedCities)
-//        }.store(in: &cancelables)
-    }
-
+enum LocationSearchState {
+    case loading
+    case loaded([String])
 }
 
-private extension LocationSearchViewModel {
-    func readSearchedCitiesFromUserDefaults() {
-       searchedCities = CitiesStorage.readSearchedCitiesFromUserDefaults()
-    }
+class LocationSearchViewModel: ObservableObject {
+    @Published var state: LocationSearchState = .loading
+    @Published var hasError: Bool = false
 }
