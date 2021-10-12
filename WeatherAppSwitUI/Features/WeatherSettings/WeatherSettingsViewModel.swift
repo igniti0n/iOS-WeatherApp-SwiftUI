@@ -17,7 +17,9 @@ class WeatherSettingsViewModel: ObservableObject {
     init() {
         readSettingsFromDefaults()
         $settings.sink {[weak self] newSettings in
-            self?.saveSettingsToDefaults(newSettings: newSettings!)
+            if  let settings = newSettings {
+                self?.saveSettingsToDefaults(newSettings: settings)
+            }
         }.store(in: &cancellable)
     }
 }

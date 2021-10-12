@@ -23,7 +23,15 @@ struct WeatherRepresentationView: View, ViewInterface {
                 case .loading:
                     Text("Loading")
                 case .error(let error):
-                    Text("error \(error.localizedDescription)")
+                    VStack {
+                        Text("error \(error.localizedDescription)")
+                        Button {
+                            presenter.getCurrentWeatherSettings()
+                            presenter.getCurrentWeather()
+                        } label: {
+                            Text("Try again")
+                        }
+                    }
                 case .loaded(let weather):
                     WeatherRepresentationContentView(weather: weather, presenter: presenter)
                 }
