@@ -8,30 +8,30 @@
 import SwiftUI
 
 struct TemperatureView: View {
-    @EnvironmentObject private var theme: Theme
-    @EnvironmentObject private var settings: WeatherSettingsViewModel
-    var temperature: Double
-    var cityName: String
-        
-    var body: some View {
-        HStack {
-            Spacer()
-            VStack(alignment: .trailing) {
-                Text("\(UnitConverter.adjustMessurmentUnit(temperature: temperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f")\(settings.settings.messurmentUnit)")
-                    .font(theme.largeFont)
-                    .bold()
-                Text("\(cityName)")
-                    .font(theme.normalFont)
-            }
-            .scaledToFit()
-            .minimumScaleFactor(0.5)
-            .lineLimit(1)
-        }
+  @EnvironmentObject private var theme: Theme
+  @EnvironmentObject private var settings: WeatherSettingsViewModel
+  var temperature: Double
+  var cityName: String
+  
+  var body: some View {
+    HStack {
+      Spacer()
+      VStack(alignment: .trailing) {
+        Text("\(UnitConverter.adjustMessurmentUnit(temperature: temperature, isCelsius: settings.settings.isCelsius), specifier: "%.2f")\(settings.settings.messurmentUnit)")
+          .font(theme.largeFont)
+          .bold()
+        Text("\(cityName)")
+          .font(theme.normalFont)
+      }
+      .scaledToFit()
+      .minimumScaleFactor(0.5)
+      .lineLimit(1)
     }
+  }
 }
 
 struct TemperatureView_Previews: PreviewProvider {
-    static var previews: some View {
-        Text("lool")// TemperatureView()
-    }
+  static var previews: some View {
+    Text("lool")// TemperatureView()
+  }
 }

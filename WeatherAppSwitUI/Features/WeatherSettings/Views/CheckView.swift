@@ -8,28 +8,28 @@
 import SwiftUI
 
 struct CheckView: View {
-    var isChecked: Bool
-    let onTapped: (()->Void)?
-    
-    var body: some View {
-        Button {
-            onTapped?()
-        } label: {
-            if isChecked {
-                Image("check" )
-                    .resizable()
-                    .background(Color.white)
-            }else {
-                Color.white
-            }
-        }
-        .frame(width: 40, height: 40, alignment: .center)
+  var isChecked: Bool
+  let onTapped: (() -> Void)?
+  
+  var body: some View {
+    Button {
+      onTapped?()
+    } label: {
+      if isChecked {
+        Image("check")
+          .resizable()
+          .background(Color.white)
+      }else {
+        Color.white
+      }
     }
+    .frame(width: 40, height: 40, alignment: .center)
+  }
 }
 
 
 struct CheckView_Previews: PreviewProvider {
-    static var previews: some View {
-        Text("Lol lol lol lol.")//CheckView()
-    }
+  static var previews: some View {
+    Text("Nema nista.")//CheckView()
+  }
 }

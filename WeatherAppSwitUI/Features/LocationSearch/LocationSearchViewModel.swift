@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 enum LocationSearchState {
-    case loading
-    case loaded([String])
+  case loading
+  case loaded([String])
 }
 
 class LocationSearchViewModel: ObservableObject {
-    @Published var state: LocationSearchState = .loading
-    @Published var hasError: Bool = false
+  @Published var state: LocationSearchState = .loading
+  @Published var hasError: Bool = false
 }

@@ -54,7 +54,7 @@
 		2C90B9B92715A42400308644 /* LocationSearchModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B9B82715A42400308644 /* LocationSearchModule.swift */; };
 		2C90B9BB2715B0F500308644 /* WeatherStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B9BA2715B0F500308644 /* WeatherStorage.swift */; };
 		2C90B9BD2715C66900308644 /* WeatherRepresentationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B9BC2715C66900308644 /* WeatherRepresentationContentView.swift */; };
-		2C90B9BF2715C7F100308644 /* NavigationBarStyleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B9BE2715C7F100308644 /* NavigationBarStyleModifier.swift */; };
+		2C90B9BF2715C7F100308644 /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B9BE2715C7F100308644 /* NavigationBarStyle.swift */; };
 		2C90B9C12715CA3000308644 /* LocationSearchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B9C02715CA3000308644 /* LocationSearchContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +108,7 @@
 		2C90B9B82715A42400308644 /* LocationSearchModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchModule.swift; sourceTree = "<group>"; };
 		2C90B9BA2715B0F500308644 /* WeatherStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStorage.swift; sourceTree = "<group>"; };
 		2C90B9BC2715C66900308644 /* WeatherRepresentationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepresentationContentView.swift; sourceTree = "<group>"; };
-		2C90B9BE2715C7F100308644 /* NavigationBarStyleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyleModifier.swift; sourceTree = "<group>"; };
+		2C90B9BE2715C7F100308644 /* NavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
 		2C90B9C02715CA3000308644 /* LocationSearchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +129,9 @@
 				2C7B1855270D94210046CEFC /* WeatherAppSwitUI */,
 				2C7B1854270D94210046CEFC /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		2C7B1854270D94210046CEFC /* Products */ = {
 			isa = PBXGroup;
@@ -144,7 +146,6 @@
 			children = (
 				2C7B1856270D94210046CEFC /* AppDelegate.swift */,
 				2C7B1858270D94210046CEFC /* SceneDelegate.swift */,
-				2C90B99A271354F100308644 /* VIPER.swift */,
 				2C7B189E270DC4770046CEFC /* Services */,
 				2C7B187F270DA20F0046CEFC /* Common */,
 				2C7B186D270D95160046CEFC /* Models */,
@@ -242,13 +243,14 @@
 		2C7B187F270DA20F0046CEFC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2C90B99A271354F100308644 /* VIPER.swift */,
 				2C7B1880270DA21D0046CEFC /* Theme.swift */,
 				2C7B1882270DA5E10046CEFC /* BackgroundView.swift */,
 				2C7B18A1270DDD1F0046CEFC /* UnitConverter.swift */,
 				2C90B9BA2715B0F500308644 /* WeatherStorage.swift */,
 				2C7B18AA270F1B040046CEFC /* CitiesStorage.swift */,
 				2C90B9B027158FC000308644 /* SettingsStorage.swift */,
-				2C90B9BE2715C7F100308644 /* NavigationBarStyleModifier.swift */,
+				2C90B9BE2715C7F100308644 /* NavigationBarStyle.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -374,7 +376,7 @@
 				2C7B1878270D988A0046CEFC /* TopButtonsView.swift in Sources */,
 				2C7B18A8270F19500046CEFC /* LowerView.swift in Sources */,
 				2C7B1883270DA5E10046CEFC /* BackgroundView.swift in Sources */,
-				2C90B9BF2715C7F100308644 /* NavigationBarStyleModifier.swift in Sources */,
+				2C90B9BF2715C7F100308644 /* NavigationBarStyle.swift in Sources */,
 				2C90B9B52715A3F800308644 /* LocationSearchPresenter.swift in Sources */,
 				2C7B18A2270DDD1F0046CEFC /* UnitConverter.swift in Sources */,
 				2C7B1890270DBBA40046CEFC /* CheckView.swift in Sources */,

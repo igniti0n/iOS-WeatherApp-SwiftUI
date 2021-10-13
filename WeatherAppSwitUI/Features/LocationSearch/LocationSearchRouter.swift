@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 class LocationSearchRouter: RouterInterface {
-    weak var presenter: LocationSearchPresenterRouter!
-    weak var controller: UIViewController!
+  weak var presenter: LocationSearchPresenterRouter!
+  weak var controller: UIViewController!
 }
 
 extension LocationSearchRouter: LocationSearchRouterPresenter {
-    func goBackToHome() {
-        controller.navigationController?.popViewController(animated: true)
-    }
+  func goBackToHome() {
+    controller.navigationController?.popViewController(animated: true)
+  }
 }

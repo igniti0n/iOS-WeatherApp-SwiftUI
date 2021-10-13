@@ -8,15 +8,15 @@
 import Foundation
 
 class WeatherSettingsInteractor: InteractorInterface {
-    weak var presenter: WeatherSettingsPresenterInteractor!
+  weak var presenter: WeatherSettingsPresenterInteractor!
 }
 
 // MARK: - User defaults
 extension WeatherSettingsInteractor: WeatherSettingsInteractorPresenter {
-    func saveSettingsToUserDefaults(settings: Settings) {
-        SettingsStorage.saveSettingsToUserDefaults(settings: settings)
-    }
-    func readSettingsFromUserDefaults() -> Settings {
-        SettingsStorage.readSettingsFromUserDefaults()
-    }
+  func saveSettingsToUserDefaults(settings: Settings) {
+    SettingsStorage.saveSettingsToUserDefaults(settings: settings)
+  }
+  func readSettingsFromUserDefaults() -> Settings {
+    SettingsStorage.readSettingsFromUserDefaults()
+  }
 }

@@ -10,15 +10,14 @@ import CoreLocation
 import Combine
 
 enum WeatherRepresentationState {
-    case loading
-    case loaded(Weather)
-    case error(Error)
+  case loading
+  case loaded(Weather)
+  case error(Error)
 }
 
 class WeatherReperesentationViewModel: ObservableObject {
-    @Published var weatherState: WeatherRepresentationState = .loading
-    @Published var settings = WeatherSettingsViewModel()
-    @Published var isErrorAlertShown = false
-    var errorMessage = "Error while fetching data."
+  @Published var weatherState: WeatherRepresentationState = .loading
+  @Published var settings = WeatherSettingsViewModel()
+  @Published var isErrorAlertShown = false
 }
 

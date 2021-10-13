@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 class WeatherSettingsRouter: RouterInterface {
-    weak var presenter: WeatherSettingsPresenterRouter!
-    weak var controller: UIViewController!
+  weak var presenter: WeatherSettingsPresenterRouter!
+  weak var controller: UIViewController!
 }
 
 extension WeatherSettingsRouter: WeatherSettingsRouterPresenter {
-    
+  
 }
