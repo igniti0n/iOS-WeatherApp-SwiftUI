@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CheckView: View {
-    @Binding var isChecked: Bool
+    var isChecked: Bool
     let onTapped: (()->Void)?
     
     var body: some View {

@@ -26,8 +26,11 @@ protocol WeatherSettingsPresenterInteractor: PresenterInteractorInterface {
 }
 
 protocol WeatherSettingsPresenterView: PresenterViewInterface {
-    func saveSettingsToUserDefaults(settings: Settings)
     func getSettingsFromUserDefaults()
+    func changeMessurmentUnit()
+    func toggleHumidity()
+    func togglePressure()
+    func toggleWind()
 }
 
 class WeatherSettingsModule: ModuleInterface {
@@ -42,10 +45,9 @@ class WeatherSettingsModule: ModuleInterface {
         let router = Router()
         let viewModel = WeatherSettingsViewModel()
         let view = View(viewModel: viewModel, presenter: presenter)
-        let settings = WeatherSettingsViewModel()
         presenter.viewModel = viewModel
         assemble(presenter: presenter, router: router, interactor: interactor)
-        let controller = UIHostingController(rootView: view.environmentObject(settings).environmentObject(Theme()))
+        let controller = UIHostingController(rootView: view.environmentObject(Theme()))
         
         router.controller = controller
         return controller

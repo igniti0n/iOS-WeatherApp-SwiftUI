@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WeatherSettingsView: View, ViewInterface {
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @ObservedObject private var viewModel: WeatherSettingsViewModel
     var presenter: WeatherSettingsPresenterView!
     
@@ -22,8 +21,8 @@ struct WeatherSettingsView: View, ViewInterface {
         BackgroundView {
             VStack(alignment: .leading, spacing: 20) {
                 Spacer()
-                UnitsSettings()
-                DetailsSettings()
+                UnitsSettings(settings: viewModel.settings, presenter: presenter)
+                DetailsSettings(settings: viewModel.settings, presenter: presenter)
                 Spacer()
             }
         }

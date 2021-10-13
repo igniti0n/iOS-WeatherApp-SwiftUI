@@ -9,20 +9,21 @@ import SwiftUI
 
 struct UnitsSettings: View {
     @EnvironmentObject private var theme: Theme
-    @EnvironmentObject var settings: WeatherSettingsViewModel
+    var settings: Settings
+    var presenter: WeatherSettingsPresenterView!
     
     var body: some View {
         VStack {
             HStack {
-                CheckView(isChecked: $settings.settings.isCelsius, onTapped: {
-                    settings.settings.changeMessurmentUnit()
+                CheckView(isChecked: settings.isCelsius, onTapped: {
+                   presenter.changeMessurmentUnit()
                 })
                 Text("Celsius")
                 Spacer()
             }
             HStack {
-                CheckView(isChecked: $settings.settings.isFarenheit, onTapped: {
-                    settings.settings.changeMessurmentUnit()
+                CheckView(isChecked: settings.isFarenheit, onTapped: {
+                    presenter.changeMessurmentUnit()
                 })
                 Text("Fahrenheit")
                 Spacer()
@@ -35,6 +36,6 @@ struct UnitsSettings: View {
 
 struct UnitsSettings_Previews: PreviewProvider {
     static var previews: some View {
-        UnitsSettings()
+        Text("no way")//UnitsSettings()
     }
 }

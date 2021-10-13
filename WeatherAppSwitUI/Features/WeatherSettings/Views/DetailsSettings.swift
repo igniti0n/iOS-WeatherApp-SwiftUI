@@ -9,29 +9,30 @@ import SwiftUI
 
 struct DetailsSettings: View {
     @EnvironmentObject private var theme: Theme
-    @EnvironmentObject var settings: WeatherSettingsViewModel
-
+    var settings: Settings
+    var presenter: WeatherSettingsPresenterView!
+    
     var body: some View {
         HStack(spacing: 30) {
             Spacer()
             VStack {
                 Image("humidity")
-                CheckView(isChecked: $settings.settings.showHumidity) {
-                    settings.settings.showHumidity.toggle()
+                CheckView(isChecked: settings.showHumidity) {
+                    presenter.toggleHumidity()
                 }
             }
             Spacer()
             VStack {
                 Image("pressure")
-                CheckView(isChecked: $settings.settings.showPressure) {
-                    settings.settings.showPressure.toggle()
+                CheckView(isChecked: settings.showPressure) {
+                    presenter.togglePressure()
                 }
             }
             Spacer()
             VStack {
                 Image("wind")
-                CheckView(isChecked: $settings.settings.showWind) {
-                    settings.settings.showWind.toggle()
+                CheckView(isChecked: settings.showWind) {
+                    presenter.toggleWind()
                 }
             }
             Spacer()
@@ -41,6 +42,6 @@ struct DetailsSettings: View {
 
 struct DetailsSettings_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsSettings()
+        Text("no")//DetailsSettings()
     }
 }
