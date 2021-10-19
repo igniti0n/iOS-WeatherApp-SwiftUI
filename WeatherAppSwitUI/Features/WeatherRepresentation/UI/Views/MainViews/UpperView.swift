@@ -10,13 +10,14 @@ import SwiftUI
 struct UpperView: View {
   let onSearchButtonPressed: (()->Void)?
   let onSettingsButtonPressed: (()->Void)?
+  let onSignOutButtonPressed: (()->Void)?
   var weather: Weather
   
   
   var body: some View {
     GeometryReader { innerContext in
       VStack(alignment: .leading) {
-        TopButtonsView(onSearchButtonPressed: onSearchButtonPressed, onSettingsButtonPressed: onSettingsButtonPressed)
+        TopButtonsView(onSearchButtonPressed: onSearchButtonPressed, onSettingsButtonPressed: onSettingsButtonPressed, onSignOutButtonPressed: onSignOutButtonPressed)
           .frame(height: innerContext.size.height / 2.5, alignment: .center)
         TemperatureView(temperature: weather.temperature, cityName: weather.name)
         Spacer()

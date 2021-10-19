@@ -10,7 +10,7 @@ import Foundation
 class WeatherRepresentationPresenter: PresenterInterface {
   var interactor: WeatherRepresentationInteractorPresenter!
   var router: WeatherRepresentationRouterPresenter!
-  weak var viewModel: WeatherReperesentationViewModel!
+  weak var viewModel: WeatherReperesentationViewState!
 }
 
 extension WeatherRepresentationPresenter: WeatherRepresentationPresenterInteractor {
@@ -28,10 +28,13 @@ extension WeatherRepresentationPresenter: WeatherRepresentationPresenterInteract
 
 extension WeatherRepresentationPresenter: WeatherRepresentationPresenterView {
   func navigateToSearch() {
-    router.navigateToSearch(viewModel: LocationSearchViewModel())
+    router.navigateToSearch(viewModel: LocationSearchViewState())
   }
   func navigateToSettings() {
-    router.navigateToSettings(viewModel: WeatherSettingsViewModel())
+    router.navigateToSettings(viewModel: WeatherSettingsViewState())
+  }
+  func signOut() {
+    AppStateProvider.instance.singOut()
   }
   func getCurrentWeatherSettings() {
     viewModel.settings.settings = interactor.getCurrentWeatherSettings()

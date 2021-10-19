@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class WeatherSettingsViewModel: ObservableObject {
+class WeatherSettingsViewState: ObservableObject {
   @Published var settings: Settings = Settings.defaultSettings()
 }
 

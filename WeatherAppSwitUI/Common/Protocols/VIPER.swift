@@ -1,5 +1,6 @@
 
 import Foundation
+import UIKit
 
 // MARK: - VIPER
 public protocol ViewInterface/*: ViewPresenterInterface*/ {
@@ -39,7 +40,6 @@ public protocol PresenterViewInterface: AnyObject {}
 
 // MARK: - module
 public protocol ModuleInterface {
-  
   associatedtype View where View: ViewInterface
   associatedtype Presenter where Presenter: PresenterInterface
   associatedtype Router where Router: RouterInterface

@@ -11,15 +11,22 @@ import SwiftUI
 
 class WeatherRepresentationRouter: RouterInterface {
   weak var presenter: WeatherRepresentationPresenterRouter!
-  weak var viewController: UIViewController?
+  weak var rootRouter: RootRouter?
 }
 
+// MARK: - Navigation
 extension WeatherRepresentationRouter: WeatherRepresentationRouterPresenter {
-  // MARK: - Navigation
-  func navigateToSearch(viewModel: LocationSearchViewModel) {
-    viewController?.navigationController?.pushViewController(LocationSearchModule().build(), animated: true)
+  func navigateToSearch(viewModel: LocationSearchViewState) {
+    if let router = rootRouter {
+      rootRouter?.push(LocationSearchModule().build(rootRouter: router), animated: true) {
+        print("Search completed!")
+      }
+    }
   }
-  func navigateToSettings(viewModel: WeatherSettingsViewModel) {
-    viewController?.navigationController?.pushViewController(WeatherSettingsModule().build(), animated: true)
+  
+  func navigateToSettings(viewModel: WeatherSettingsViewState) {
+    if let router = rootRouter {
+      rootRouter?.push(WeatherSettingsModule().build(rootRouter: router), animated: true, completion: nil)
+    }
   }
 }

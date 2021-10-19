@@ -10,7 +10,7 @@ import Foundation
 class LocationSearchPresenter: PresenterInterface {
   var interactor: LocationSearchInteractorPresenter!
   var router: LocationSearchRouterPresenter!
-  weak var viewModel: LocationSearchViewModel!
+  weak var viewModel: LocationSearchViewState!
 }
 
 extension LocationSearchPresenter: LocationSearchPresenterView {

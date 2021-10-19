@@ -30,14 +30,15 @@ protocol WeatherRepresentationPresenterRouter: PresenterRouterInterface {
 protocol WeatherRepresentationPresenterView: PresenterViewInterface {
   func navigateToSearch()
   func navigateToSettings()
+  func signOut()
   func getCurrentWeatherSettings()
   func getCurrentWeather()
   
 }
 
 protocol WeatherRepresentationRouterPresenter: RouterPresenterInterface {
-  func navigateToSearch(viewModel: LocationSearchViewModel)
-  func navigateToSettings(viewModel: WeatherSettingsViewModel)
+  func navigateToSearch(viewModel: LocationSearchViewState)
+  func navigateToSettings(viewModel: WeatherSettingsViewState)
 }
 
 class WeatherRepresentationModule: ModuleInterface {
@@ -48,21 +49,19 @@ class WeatherRepresentationModule: ModuleInterface {
   
   init() {
   }
-  
   // MARK:- Assembling everything
-  func build() -> UIViewController {
+  func build(rootRouter: RootRouter?) -> UIViewController {
     let presenter = Presenter()
     let router = Router()
     let interactor = Interactor()
-    let viewModel = WeatherReperesentationViewModel()
-    let view = WeatherRepresentationView(viewModel: viewModel, presenter: presenter)
+    let viewModel = WeatherReperesentationViewState()
+    let view = WeatherRepresentationView(viewState: viewModel, presenter: presenter)
     presenter.viewModel = viewModel
     assemble(presenter: presenter, router: router, interactor: interactor)
     let hostingController = UIHostingController(rootView: view.navigationBarHidden(true))
-    let navigationController = UINavigationController(rootViewController: hostingController)
     hostingController.navigationItem.title = ""
-    router.viewController = hostingController
-    return navigationController
+    router.rootRouter = rootRouter
+    return hostingController
   }
   
 }

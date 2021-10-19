@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MinMaxView: View {
   @EnvironmentObject private var theme: Theme
-  @EnvironmentObject private var settings: WeatherSettingsViewModel
+  @EnvironmentObject private var settings: WeatherSettingsViewState
   var minTemperature: Double
   var maxTemperature: Double
   

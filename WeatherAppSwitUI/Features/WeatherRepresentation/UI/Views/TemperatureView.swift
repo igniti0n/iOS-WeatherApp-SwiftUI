@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TemperatureView: View {
   @EnvironmentObject private var theme: Theme
-  @EnvironmentObject private var settings: WeatherSettingsViewModel
+  @EnvironmentObject private var settings: WeatherSettingsViewState
   var temperature: Double
   var cityName: String
   

@@ -15,9 +15,9 @@ enum WeatherRepresentationState {
   case error(Error)
 }
 
-class WeatherReperesentationViewModel: ObservableObject {
+class WeatherReperesentationViewState: ObservableObject {
   @Published var weatherState: WeatherRepresentationState = .loading
-  @Published var settings = WeatherSettingsViewModel()
+  @Published var settings = WeatherSettingsViewState()
   @Published var isErrorAlertShown = false
 }
 

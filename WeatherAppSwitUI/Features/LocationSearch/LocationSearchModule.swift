@@ -41,16 +41,16 @@ class LocationSearchModule: ModuleInterface {
   typealias Router = LocationSearchRouter
   typealias Interactor = LocationSearchInteractor
   
-  func build() -> UIViewController {
+  func build(rootRouter: RootRouter?) -> UIViewController {
     let router = Router()
     let presenter = Presenter()
     let interactor = Interactor()
-    let viewModel = LocationSearchViewModel()
-    let view =  LocationSearchView(viewModel: viewModel, presenter: presenter).environmentObject(Theme())
+    let viewModel = LocationSearchViewState()
+    let view =  LocationSearchView(viewState: viewModel, presenter: presenter).environmentObject(Theme())
     presenter.viewModel = viewModel
     assemble(presenter: presenter, router: router, interactor: interactor)
     let controller = UIHostingController(rootView: view)
-    router.controller = controller
+    router.rootRouter = rootRouter
     return controller
   }
   

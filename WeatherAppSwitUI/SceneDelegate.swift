@@ -10,13 +10,13 @@ import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
+  let appCoordinator = AppCoordinator()
   
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    let rootModule = WeatherRepresentationModule()
     
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)
-      window.rootViewController = rootModule.build()
+      window.rootViewController = appCoordinator.start()
       self.window = window
       window.makeKeyAndVisible()
     }

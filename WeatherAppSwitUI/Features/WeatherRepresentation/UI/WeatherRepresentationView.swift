@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct WeatherRepresentationView: View, ViewInterface {
-  @ObservedObject private var viewModel: WeatherReperesentationViewModel
+  @ObservedObject private var viewState: WeatherReperesentationViewState
   var presenter: WeatherRepresentationPresenterView!
   
-  init(viewModel: WeatherReperesentationViewModel, presenter: WeatherRepresentationPresenterView) {
-    self.viewModel = viewModel
+  init(viewState: WeatherReperesentationViewState, presenter: WeatherRepresentationPresenterView) {
+    self.viewState = viewState
     self.presenter = presenter
   }
   
   var body: some View {
     NavigationView {
       BackgroundView {
-        switch viewModel.weatherState {
+        switch viewState.weatherState {
         case .loading:
           Text("Loading")
         case .error(_):
@@ -37,13 +37,13 @@ struct WeatherRepresentationView: View, ViewInterface {
         }
       }
       .navigationBarHidden(true)
-      .environmentObject(viewModel.settings)
+      .environmentObject(viewState.settings)
       .environmentObject(Theme())
       .onAppear() {
         presenter.getCurrentWeatherSettings()
         presenter.getCurrentWeather()
       }
-      .alert(isPresented: $viewModel.isErrorAlertShown) {
+      .alert(isPresented: $viewState.isErrorAlertShown) {
         Alert(title: Text( "Operation failed"), message: Text("Error while fetching data"), dismissButton: .some(.cancel(Text("Okay."))))
       }
     }

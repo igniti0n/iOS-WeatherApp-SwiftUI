@@ -10,7 +10,7 @@ import Foundation
 class WeatherSettingsPresenter: PresenterInterface {
   var interactor: WeatherSettingsInteractorPresenter!
   var router: WeatherSettingsRouterPresenter!
-  weak var viewModel: WeatherSettingsViewModel!
+  weak var viewModel: WeatherSettingsViewState!
 }
 
 extension WeatherSettingsPresenter: WeatherSettingsPresenterInteractor {

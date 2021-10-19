@@ -13,7 +13,7 @@ enum LocationSearchState {
   case loaded([String])
 }
 
-class LocationSearchViewModel: ObservableObject {
+class LocationSearchViewState: ObservableObject {
   @Published var state: LocationSearchState = .loading
   @Published var hasError: Bool = false
 }

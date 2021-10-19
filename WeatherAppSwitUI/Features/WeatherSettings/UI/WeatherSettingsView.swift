@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct WeatherSettingsView: View, ViewInterface {
-  @ObservedObject private var viewModel: WeatherSettingsViewModel
+  @ObservedObject private var viewState: WeatherSettingsViewState
   var presenter: WeatherSettingsPresenterView!
   
-  init(viewModel: WeatherSettingsViewModel, presenter: WeatherSettingsPresenterView) {
-    self.viewModel = viewModel
+  init(viewState: WeatherSettingsViewState, presenter: WeatherSettingsPresenterView) {
+    self.viewState = viewState
     self.presenter = presenter
     NavigationBarStyle.apply()
   }
@@ -21,8 +21,8 @@ struct WeatherSettingsView: View, ViewInterface {
     BackgroundView {
       VStack(alignment: .leading, spacing: 20) {
         Spacer()
-        UnitsSettings(settings: viewModel.settings, presenter: presenter)
-        DetailsSettings(settings: viewModel.settings, presenter: presenter)
+        UnitsSettings(settings: viewState.settings, presenter: presenter)
+        DetailsSettings(settings: viewState.settings, presenter: presenter)
         Spacer()
       }
     }

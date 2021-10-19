@@ -39,16 +39,16 @@ class WeatherSettingsModule: ModuleInterface {
   typealias Router = WeatherSettingsRouter
   typealias Interactor = WeatherSettingsInteractor
   
-  func build() -> UIViewController {
+  func build(rootRouter: RootRouter?) -> UIViewController {
     let interactor = Interactor()
     let presenter  = Presenter()
     let router = Router()
-    let viewModel = WeatherSettingsViewModel()
-    let view = View(viewModel: viewModel, presenter: presenter)
+    let viewModel = WeatherSettingsViewState()
+    let view = View(viewState: viewModel, presenter: presenter)
     presenter.viewModel = viewModel
     assemble(presenter: presenter, router: router, interactor: interactor)
     let controller = UIHostingController(rootView: view.environmentObject(Theme()))
-    router.controller = controller
+    router.rootRouter = rootRouter
     return controller
   }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct TopButtonsView: View {
   let onSearchButtonPressed: (()->Void)?
   let onSettingsButtonPressed: (()->Void)?
+  let onSignOutButtonPressed: (()->Void)?
   @EnvironmentObject private var theme: Theme
   
   let conditionId = 800
@@ -42,6 +43,9 @@ struct TopButtonsView: View {
         .onTapGesture {
           onSettingsButtonPressed?()
         }
+      Button("SignOut") {
+       onSignOutButtonPressed?()
+      }
       Spacer()
       Image(systemName: conditionName)
         .resizable()

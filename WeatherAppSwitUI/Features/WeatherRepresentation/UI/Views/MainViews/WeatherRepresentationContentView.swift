@@ -18,7 +18,10 @@ struct WeatherRepresentationContentView: View {
           presenter.navigateToSearch()
         }, onSettingsButtonPressed: {
           presenter.navigateToSettings()
-        }, weather: weather)
+        },onSignOutButtonPressed: {
+          presenter.signOut()
+        },
+        weather: weather)
         .frame(height: ctx.size.height / 2, alignment: .center)
         .padding(EdgeInsets(top: 10, leading: 40, bottom: 10, trailing: 40))
         LowerView(weather: weather)

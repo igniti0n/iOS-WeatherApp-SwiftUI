@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailsView: View {
   @EnvironmentObject private var theme: Theme
-  @EnvironmentObject private var settings: WeatherSettingsViewModel
+  @EnvironmentObject private var settings: WeatherSettingsViewState
   var humidity: Double
   var pressure: Double
   var windSpeed: Double

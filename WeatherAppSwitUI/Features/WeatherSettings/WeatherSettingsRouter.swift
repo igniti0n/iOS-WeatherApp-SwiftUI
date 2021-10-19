@@ -10,7 +10,7 @@ import UIKit
 
 class WeatherSettingsRouter: RouterInterface {
   weak var presenter: WeatherSettingsPresenterRouter!
-  weak var controller: UIViewController!
+  weak var rootRouter: RootRouter?
 }
 
 extension WeatherSettingsRouter: WeatherSettingsRouterPresenter {
